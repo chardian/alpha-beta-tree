@@ -82,13 +82,13 @@ class Board(object):
 		self.history.pop()
 
 	def draw_piece(self, x, y, belong, turn):
-		qi = Circle(self.get_qi_pos(x, y), 40)
+		qi = Circle(self.get_piece_pos(x, y), 40)
 		if belong == PLAYER:
 			qi.setFill('black')
 		else:
 			qi.setFill('white')
 		qi.draw(self.win)
-		msg = Text(self.get_qi_pos(x, y), str(turn))
+		msg = Text(self.get_piece_pos(x, y), str(turn))
 		msg.setFill('grey')
 		msg.setSize(20)
 		msg.draw(self.win)
@@ -114,7 +114,7 @@ class Board(object):
 	def get_offset_pos(self, x, y):
 		return Point(x + self.offset_x, y + self.offset_y)
 
-	def get_qi_pos(self, x, y):
+	def get_piece_pos(self, x, y):
 		return Point(self.offset_x + (x + 0.5) * CELL, self.offset_y + (0.5 + y) * CELL)
 
 	def draw_board(self):
